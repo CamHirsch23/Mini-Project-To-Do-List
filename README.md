@@ -1,37 +1,51 @@
-1. Setting Up
+1. User Interface (UI)
 
-Create a new Python file named todo_app.py to start the development of the To-Do List application. This step sets the foundation for the project by establishing a dedicated file for the codebase.
-2. Menu Display
+Create a command-line interface (CLI) for the To-Do List Application. The CLI will display a welcoming message and a menu with the following options:
+Welcome to the To-Do List App!
+Menu:
+Add a task
+View tasks
+Mark a task as complete
+Delete a task
+Quit 
+2. To-Do List Features
 
-Implement a display_menu() function to show options to the user. This function will present the available actions (e.g., add task, view tasks, mark task as done, delete task, quit) and prompt the user to select an option 
+Implement the following features for the To-Do List:
+Adding a Task: Add a task with a title (by default “Incomplete”) 
 .
-3. Adding Tasks
-
-Create an add_task(tasks) function to add new tasks to the list. This function will prompt the user for a task description and append the task to the list 
+Viewing Tasks: View the list of tasks with their titles and statuses (e.g., "Incomplete" or "Complete") 
 .
-4. Viewing Tasks
-
-Implement a view_tasks(tasks) function to display all tasks with their indices. This function will iterate through the list of tasks and print each task's description 
+Marking a Task as Complete: Mark a task as complete 
 .
-5. Marking Tasks as Done
-
-Create a mark_task_done(tasks) function to remove completed tasks. This function will allow the user to select a task by its index and mark it as done, typically by removing it from the list or updating its status 
+Deleting a Task: Delete a task 
 .
-6. Main Program Logic
-
-Implement the main() function to handle user input and call appropriate functions based on the user's choice. This function will serve as the entry point of the application, managing the flow of the program 
+Quitting the Application: Quit the application 
 .
-7. Save and Load Tasks
+3. User Interaction
 
-Add save_tasks(tasks) and load_tasks() functions for data persistence. These functions will handle saving the list of tasks to a file and loading tasks from a file, respectively, ensuring that task data is preserved between sessions
+Allow users to interact with the application by selecting menu options using input(). Implement input validation to handle unexpected user input gracefully 
 .
-8. Editing Tasks
+4. Error Handling
 
-Implement an edit_task(tasks) function to modify existing tasks. This function will allow the user to select a task by its index and update its description and due date.
-9. Adding Due Dates
+Implement error handling using try, except, else, and finally blocks to handle potential issues 
+.
+5. Code Organization
 
-Modify the task structure to include due dates. This enhancement involves updating the task data model to store both the task description and its due date, providing more context and organization for the tasks.
-10. Creating a GUI
+Organize your code into functions to promote modularity and readability. Use meaningful function names with appropriate comments and docstrings for clarity 
+.
+6. Testing and Debugging
 
-Use Tkinter to create a graphical interface for the application. This step involves setting up the main window, adding widgets (e.g., buttons, entry fields, listboxes), and defining methods for task operations to create a user-friendly interface 
+Thoroughly test your application to identify and fix any bugs. Consider edge cases, such as empty task lists or incorrect user input 
+.
+7. Documentation
+
+Include a README file that explains how to run the application and provides a brief overview of its features 
+.
+8. Optional Features (Bonus)
+
+If you feel adventurous, you can add extra features like task priorities, due dates, or color-coding tasks based on their status 
+.
+9. GitHub Repository
+
+Create a GitHub repository for your project. Commit your code to the repository regularly. Include a link to your GitHub repository in your project documentation 
 .
