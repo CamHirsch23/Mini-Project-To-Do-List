@@ -1,65 +1,73 @@
-# Question 1 
-# Task 1 
+import os
+
+tasks = []
+
 def display_menu():
-    print("Menu:")
-    print("1. Add Task")
-    print("2. View Tasks")
-    print("3. Mark as Done")
-    print("4. Exit")
+    print("Welcome to the To-Do List App!")
+    print("\nMenu:")
+    print("1. Add a task")
+    print("2. View tasks")
+    print("3. Mark a task as complete")
+    print("4. Delete a task")
+    print("5. Quit")
 
 def add_task(tasks):
-    task = input("Enter task description: ")
+    title = input("Enter task title: ")
+    task = {'title': title, 'status': 'Incomplete'}
     tasks.append(task)
     print("Task added successfully!")
 
 def view_tasks(tasks):
-    print("\nTasks:")
-    for i, task in enumerate(tasks, start=1):
-        print(f"{i}. {task}")
-
-def mark_task_done(tasks):
     if not tasks:
-        print("No tasks to mark as done.")
-        return
-
-    view_tasks(tasks)
-    index = int(input("Enter task index to mark as done: ")) - 1
-
-    if 0 <= index < len(tasks):
-        removed_task = tasks.pop(index)
-        print(f"Task '{removed_task}' marked as done and removed.")
+        print("No tasks available.")
     else:
-        print("Invalid task index.")
+        for i, task in enumerate(tasks, start=1):
+            print(f"{i}. {task['title']} - {task['status']}")
 
-def save_tasks(tasks):
-    with open("tasks.txt", "w") as f:
-        for task in tasks:
-            f.write(task + '\n')
-
-def load_tasks():
+def mark_task_complete(tasks):
+    if not tasks:
+        print("No tasks to mark as complete.")
+        return
+    view_tasks(tasks)
     try:
-        with open("tasks.txt", "r") as f:
-            return f.read().splitlines()
-    except FileNotFoundError:
-        return []
+        index = int(input("Enter task index to mark as complete: ")) - 1
+        if 0 <= index < len(tasks):
+            tasks[index]['status'] = 'Complete'
+            print("Task marked as complete.")
+        else:
+            print("Invalid task index.")
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+
+def delete_task(tasks):
+    if not tasks:
+        print("No tasks to delete.")
+        return
+    view_tasks(tasks)
+    try:
+        index = int(input("Enter task index to delete: ")) - 1
+        if 0 <= index < len(tasks):
+            removed_task = tasks.pop(index)
+            print(f"Task '{removed_task['title']}' deleted.")
+        else:
+            print("Invalid task index.")
+    except ValueError:
+        print("Invalid input. Please enter a number.")
 
 def main():
-    tasks = load_tasks()
-
     while True:
         display_menu()
-
         choice = input("Enter your choice: ")
-
         if choice == '1':
             add_task(tasks)
         elif choice == '2':
             view_tasks(tasks)
         elif choice == '3':
-            mark_task_done(tasks)
+            mark_task_complete(tasks)
         elif choice == '4':
-            print("Exiting.")
-            save_tasks(tasks)
+            delete_task(tasks)
+        elif choice == '5':
+            print("Exiting the application.")
             break
         else:
             print("Invalid choice. Please select a valid option.")
